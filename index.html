@@ -55,29 +55,72 @@
                 linear-gradient(90deg, rgba(52, 152, 219, 0.1) 1px, transparent 1px);
             background-size: 40px 40px;
             color: var(--white); 
-            text-align: center; 
             padding: 8rem 20px;
             position: relative;
+            overflow: hidden;
         }
         
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         .hero-content h1 { 
             color: var(--white); 
             font-size: 3.5rem; 
-            margin: 0 0 2rem 0;
+            margin: 0 0 3rem 0;
             text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInSlide 1s forwards;
         }
 
+        /* Khung chứa ảnh và nội dung About */
+        .about-flex-container {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Khung ảnh ôm sát */
+        .profile-image-container {
+            flex: 0 0 300px;
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeInSlide 1s forwards 0.3s;
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block; /* Loại bỏ khoảng trống dưới ảnh */
+        }
+
+        /* Thẻ About Me */
         .about-card {
             background: rgba(255, 255, 255, 0.95);
             color: var(--text);
             border-radius: 24px;
-            padding: 3rem;
-            max-width: 850px;
-            margin: auto;
+            padding: 2.5rem;
+            flex: 1;
+            text-align: left;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255,255,255,0.3);
-            position: relative;
-            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: fadeInSlide 1s forwards 0.5s;
         }
 
         .about-header-tag {
@@ -90,139 +133,27 @@
             margin-bottom: 1rem;
         }
 
-        /* Các phần nội dung */
-        .container { max-width: 1100px; margin: auto; padding: 4rem 20px; }
-        .section-title { 
-            border-left: 6px solid var(--light-blue); 
-            padding-left: 20px; 
-            margin-bottom: 3rem; 
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* Animation cho toàn bộ phần đầu */
+        @keyframes fadeInSlide {
+            to {
+                opacity: 1;
+                transform: translate(0);
+            }
         }
 
-        .job-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        /* Thành tựu */
-        .achieve-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 25px; 
-        }
-        .achieve-card { 
-            background: var(--white); 
-            padding: 2rem; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--navy);
-        }
-
-        .cert-highlight {
-            background: var(--soft-blue);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: var(--navy);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Tác động cộng đồng */
-        .impact-item { 
-            background: var(--navy); 
-            color: white;
-            padding: 2.5rem; 
-            border-radius: 20px; 
-            margin-bottom: 2rem; 
-        }
-        .impact-item h4 { color: var(--light-blue); }
-
-        /* CẢM NHẬN HỌC VIÊN (TESTIMONIALS) */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 2rem;
-        }
-        .testimonial-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border: 1px solid #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s ease;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-        }
-        .testimonial-content {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .testimonial-text {
-            font-style: italic;
-            color: var(--text);
-            text-align: center;
-            line-height: 1.8;
-            font-size: 1.05rem;
-            margin: 0;
-            position: relative;
-        }
-        .testimonial-text::before {
-            content: '"';
-            font-family: 'Montserrat';
-            font-size: 4rem;
-            color: var(--soft-blue);
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: -1;
-        }
-        .testimonial-author {
-            margin-top: 25px;
-            font-weight: bold;
-            color: var(--navy);
-            font-family: 'Montserrat';
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-top: 2px solid var(--soft-blue);
-            padding-top: 15px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* LIÊN HỆ */
-        .contact-box {
-            background: linear-gradient(135deg, var(--navy), #2c3e50);
-            color: white;
-            padding: 4rem 2rem;
-            border-radius: 30px;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        .contact-box a { color: var(--light-blue); text-decoration: none; font-weight: bold; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .about-card { padding: 1.5rem; }
-            .testimonial-grid { grid-template-columns: 1fr; }
+        /* Responsive cho điện thoại */
+        @media (max-width: 850px) {
+            .about-flex-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile-image-container {
+                flex: 0 0 auto;
+                width: 250px;
+                height: 250px;
+            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-card { text-align: center; }
         }
     </style>
 </head>
@@ -233,18 +164,25 @@
     <a href="#experience">Kinh nghiệm</a>
     <a href="#achievements">Thành tựu</a>
     <a href="#community">Cộng đồng</a>
-    <a href="#testimonials">Học viên nói gì</a>
+    <a href="#testimonials">Cảm nhận</a>
     <a href="#contact">Liên hệ</a>
 </nav>
 
 <header class="hero" id="about">
     <div class="hero-content">
         <h1>TRƯƠNG QUỲNH NHƯ</h1>
-        <div class="about-card">
-            <span class="about-header-tag">Về tôi</span>
-            <p style="font-size: 1.15rem; margin: 0;">
-                Dù là giảng dạy cá nhân hay điều phối các chương trình kết nối giáo viên quốc tế, hành trình của tôi luôn xoay quanh mục tiêu phát triển con người. Bằng cách kết hợp trải nghiệm đứng lớp và năng lực điều phối, tôi hướng tới xây dựng môi trường học tập đa văn hóa và bình đẳng. Tôi luôn tin rằng giáo dục là chìa khóa để khai phóng tiềm năng và kết nối cộng đồng.
-            </p>
+        
+        <div class="about-flex-container">
+            <div class="profile-image-container">
+                <img src="images/profile.jpg" alt="Trương Quỳnh Như" onerror="this.src='https://via.placeholder.com/300x400?text=Profile+Image'">
+            </div>
+
+            <div class="about-card">
+                <span class="about-header-tag">Về tôi</span>
+                <p style="font-size: 1.1rem; margin: 0; line-height: 1.8;">
+                    Từ việc giảng dạy cá nhân đến điều phối các chương trình kết nối nhà giáo dục xuyên quốc gia, hành trình của tôi luôn lấy sự phát triển của con người làm trọng tâm. Tôi kết hợp kinh nghiệm giảng dạy thực tiễn cùng kỹ năng điều phối để tạo ra những không gian học tập hòa nhập và đa văn hóa. Với tôi, giáo dục chính là công cụ mạnh mẽ để trao quyền và thúc đẩy sự hợp tác.
+                </p>
+            </div>
         </div>
     </div>
 </header>
@@ -603,6 +541,7 @@
 
 </body>
 </html>
+
 
 
 
